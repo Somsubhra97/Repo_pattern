@@ -13,10 +13,8 @@ namespace PostRepo
         public UnitOfWork(PostStoreDbContext postStoreDbContext,
             IPostsRepository postsRepository)
         {
-            this._context = postStoreDbContext;
-            
-            this.Post = postsRepository;
-            this.Catalogues = catalogueRepository;
+            this._context = postStoreDbContext;            
+            this.Post = postsRepository;            
         }
         public int Complete()
         {
