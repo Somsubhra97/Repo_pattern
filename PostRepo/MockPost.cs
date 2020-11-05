@@ -8,8 +8,8 @@ namespace PostRepo
 public class MockPost : IPostsRepository
     {
    
-    private readonly DataContext _context;
-    public MockPost(DataContext dbcontext)
+    private readonly PostStoreDbContext _context;
+    public MockPost(PostStoreDbContext dbcontext)
     {  
          _context=dbcontext;
 
