@@ -16,7 +16,7 @@ public class MockPost : IPostsRepository
     }
  
     
-    public async Task<ServiceResponse<List<Post>>> GetterDB(){
+    public async Task<ServiceResponse<List<Post>>> GetAll(){
         ServiceResponse<List<Post>> ob=new ServiceResponse<List<Post>>();
         List<Post> db=new List<Post>();
         db=await _context.Posts.ToListAsync();
@@ -25,7 +25,7 @@ public class MockPost : IPostsRepository
     } 
 
 
-    public async Task<ServiceResponse<Post>> GetPostByIdDB(int id){
+    public async Task<ServiceResponse<Post>> GetPostById(int id){
         ServiceResponse<Post> ob=new ServiceResponse<Post>();        
         Post x=await _context.Posts.FirstOrDefaultAsync(i=>i.id==id);
         ob.Data= x;
@@ -34,7 +34,7 @@ public class MockPost : IPostsRepository
 
 
 
-    public async Task<ServiceResponse<List<Post>>> CreatePostDB(Post data){
+    public async Task<ServiceResponse<List<Post>>> AddPost(Post data){
         ServiceResponse<List<Post>> ob=new ServiceResponse<List<Post>>();
         
         await _context.Commands.AddAsync(cmd);
@@ -47,7 +47,7 @@ public class MockPost : IPostsRepository
 
 
     
-    public async Task<ServiceResponse<Post>> UpdatePostDB(Post data,int id){
+    public async Task<ServiceResponse<Post>> UpdatePost(Post data,int id){
        ServiceResponse<Post> ob=new ServiceResponse<Post>();
 
        try{
@@ -68,7 +68,7 @@ public class MockPost : IPostsRepository
 
 
 
-    public async Task<ServiceResponse<List<Post>>> DeleteDB(int id){
+    public async Task<ServiceResponse<List<Post>>> Delete(int id){
         ServiceResponse<Post> ob=new ServiceResponse<Post>();
         try{
             Command x=await _context.Commands.FirstAsync(i=>i.id==id);
