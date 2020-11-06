@@ -42,10 +42,12 @@ namespace PostAPI.Controllers
    
         [HttpPost]
         public async Task<IActionResult> Add(Post cmd){
-           
-                var ret=await  _unitOfWork.Posts.AddPostDB(cmd); 
-                Console.WriteLine(cmd) ;                     
-                return Ok(ret);            
+           ServiceResponse<Post> x=await  _unitOfWork.Posts.GetPostByIdDB(id);
+                _unitOfWork.Posts.AddPostDB(cmd); 
+                _unitOfWork.Complete();
+                x.Success=true;
+                x.Message="Stored Successfully";                    
+                return Ok(x);            
             }
             
 
